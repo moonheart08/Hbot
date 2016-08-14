@@ -17,8 +17,9 @@ module.exports = (client) => {
                         client.say(to,output);
                      }
                      if (err) {
-                         client.say(from,err.message+"\n"+err.stack);
-                         client.say(to,err.message);
+                         var ermsg = err.message.replace(/[\n\r\7]/g, "");
+                         client.say(from,ermsg+"\n"+err.stack);
+                         client.say(to,ermsg);
                      }
                       } catch (err) {
                           console.log(err);
