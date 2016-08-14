@@ -12,8 +12,7 @@ module.exports = (client) => {
                   script.on('exit', function(err, output) {
                       try {
                      if (output) { 
-                         output = output.replace(/\r?\n|\r/g, " ");
-                         output = output.replace(/\7/g, " ");
+                         output = output.replace(/[\n\r\7]/g, "");
                          output = output.substring(0,500);
                         client.say(to,output);
                      }
